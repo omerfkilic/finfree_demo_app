@@ -12,6 +12,6 @@ Future<http.Response> getDataFromApi() async {
     uri,
     headers: header,
   );
-  //print(response.body);
+  print(response.body);
   return response;
 }

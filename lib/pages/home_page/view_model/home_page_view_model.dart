@@ -1,4 +1,5 @@
 import 'package:finfree_demo_app/core/models/price_model.dart';
+import 'package:finfree_demo_app/core/models/sales_data_model.dart';
 import 'package:finfree_demo_app/core/services/finfree_api/finfree_api.dart';
 import 'package:http/http.dart';
 
@@ -8,7 +9,7 @@ class HomePageViewModel {
       _instance ?? HomePageViewModel._init();
   HomePageViewModel._init();
 
-  late PriceModel? priceModel;
+  PriceModel? priceModel;
 
   Future<int?> getData() async {
     Response response = await getDataFromApi();
@@ -19,5 +20,12 @@ class HomePageViewModel {
       return response.statusCode;
     }
     return null;
+  }
+
+  List<SalesData> getSalesData() {
+    return priceModel!.priceEntryof1G!
+        .map((e) => SalesData(
+            DateTime.fromMillisecondsSinceEpoch(e.d).toString(), e.c!))
+        .toList();
   }
 }
