@@ -1,9 +1,6 @@
-import 'package:finfree_demo_app/core/models/price_model.dart';
 import 'package:finfree_demo_app/core/models/sales_data_model.dart';
-import 'package:finfree_demo_app/core/services/finfree_api/finfree_api.dart';
 import 'package:finfree_demo_app/pages/home_page/view_model/home_page_view_model.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 class HomePage extends StatefulWidget {
@@ -17,7 +14,6 @@ class _HomePageState extends State<HomePage> {
   late HomePageViewModel viewModel;
   @override
   void initState() {
-    // TODO: implement initState
     viewModel = HomePageViewModel.instance;
     super.initState();
   }
@@ -29,7 +25,7 @@ class _HomePageState extends State<HomePage> {
         title: const Text('Akbank'),
       ),
       floatingActionButton: FloatingActionButton(
-        child: const Icon(Icons.get_app_sharp),
+        child: const Icon(Icons.refresh),
         onPressed: () async {
           await viewModel.getData();
           setState(() {});
@@ -48,15 +44,33 @@ class _HomePageState extends State<HomePage> {
                     legend: Legend(isVisible: true),
                     series: <LineSeries<SalesData, String>>[
                       LineSeries<SalesData, String>(
+                          name: 'Akbank',
                           dataSource: viewModel.getSalesData(),
                           xValueMapper: (SalesData sales, _) => sales.year,
                           yValueMapper: (SalesData sales, _) => sales.sales,
                           // Enable data label
                           dataLabelSettings:
-                              DataLabelSettings(isVisible: true)),
+                              const DataLabelSettings(isVisible: true)),
                     ],
                   ),
-                  Row()
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    //Burada 6 adet Elevated button oluşturuluyor
+                    //hangisine basılırsa grafiği o aralığa göre ayarlıyor
+                    children: ['1G', '1H', '1A', '3A', '1Y', '5Y']
+                        .map((e) => SizedBox(
+                              width: 150,
+                              child: ElevatedButton(
+                                  onPressed: () {
+                                    setState(() {
+                                      viewModel.priceEntryRange = e;
+                                      viewModel.getSalesData();
+                                    });
+                                  },
+                                  child: Text(e)),
+                            ))
+                        .toList(),
+                  )
                 ],
               ),
       ),

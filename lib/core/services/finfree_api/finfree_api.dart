@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:http/http.dart' as http;
 
 Future<http.Response> getDataFromApi() async {
@@ -12,6 +10,5 @@ Future<http.Response> getDataFromApi() async {
     uri,
     headers: header,
   );
-  print(response.body);
   return response;
 }
