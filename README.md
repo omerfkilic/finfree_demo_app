@@ -1,16 +1,27 @@
 # finfree_demo_app
 
-A new Flutter project.
+Bu uygulama Akbankın hisse senetlerinin değerinin değişimini gösteren bir uygulamadır.
+
+
+
+https://user-images.githubusercontent.com/57109630/193886613-56509473-ba7d-4081-85f4-e8eab3e2da13.mp4
+
+
+
+
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+Uygulama açıldığında alttaki ekran geliyor. Verileri çekebilmek için sağ alttaki butona basmak gerekiyor.
 
-A few resources to get you started if this is your first Flutter project:
+![Capture2](https://user-images.githubusercontent.com/57109630/193883049-be502e54-4e6b-4f3f-9719-d58c100c09c5.PNG)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Verileri ilk çektiğinde hisse senedinin 1 günlük değer değişimi grafiği geliyor. Alttaki butonlara basarak zaman aralığı değiştirilebiliyor.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![Capture](https://user-images.githubusercontent.com/57109630/193884211-174d6744-cbeb-4ad1-a03a-63d3cb487925.PNG)
+
+Buda hisse senedinin 1 yıllık değer değişimi grafiği.
+
+![Capture1](https://user-images.githubusercontent.com/57109630/193885041-bd71aa50-010e-4fb3-bac1-aaf1d506085b.PNG)
+
+
